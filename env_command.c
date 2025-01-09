@@ -1,8 +1,8 @@
 #include "shell.h"
 
 /**
- * env_command - Affiche les variables d'environnement actuelles
- * Return: Toujours 0
+ * env_command - Displays current environment variables
+ * Return: Always 0
  */
 int env_command(void)
 {
