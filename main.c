@@ -14,29 +14,33 @@ int main(void)
     while (1)
     {
         if (interactive)
+	{
             printf("%s", PROMPT);
+	}
 
         chars_read = getline(&buffer, &bufsize, stdin);
         if (chars_read == -1)
+	{
             break;
-
+	}
         /* Remove newline character */
         if (chars_read > 0 && buffer[chars_read - 1] == '\n')
+	{
             buffer[chars_read - 1] = '\0';
-
+	}
         /* Skip empty lines */
         if (buffer[0] == '\0')
             continue;
 if (strcmp(buffer, "exit") == 0)
         {
 		exit_command(exitstatus);
+	}
   if (strcmp(buffer, "env") == 0)
         {
             env_command();  
             continue;  
         }
            /** exit_command(exitstatus);*/
-        }
         execute_command(buffer);
     }
 
