@@ -10,7 +10,7 @@ int main(void)
     size_t bufsize = 0;
     ssize_t chars_read;
     int interactive = isatty(STDIN_FILENO);
-
+    int exitstatus = 0;
     while (1)
     {
         if (interactive)
@@ -34,7 +34,7 @@ if (strcmp(buffer, "exit") == 0)
             env_command();  
             continue;  
         }
-            exit_command();
+            exit_command(exitstatus);
             break;
         }
         execute_command(buffer);

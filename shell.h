@@ -14,6 +14,6 @@ extern char **environ;
 
 /* Prototypes */
 int execute_command(char *command);
-int exit_command(void);
+int exit_command(int status);
 int env_command(void);
 #endif
