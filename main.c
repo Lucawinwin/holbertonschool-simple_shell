@@ -16,6 +16,7 @@ int main(void)
         if (interactive)
 	{
             printf("%s", PROMPT);
+	    fflush(stdout);
 	}
 
         chars_read = getline(&buffer, &bufsize, stdin);
@@ -33,6 +34,7 @@ int main(void)
             continue;
 if (strcmp(buffer, "exit") == 0)
         {
+		free(buffer);
 		exit_command(exitstatus);
 	}
   if (strcmp(buffer, "env") == 0)
