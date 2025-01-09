@@ -1,0 +1,72 @@
+SHELL(1)
+
+NOM
+shell - Un interpréteur de commandes simple qui exécute des commandes externes et prend en charge des commandes internes comme exit et env.
+
+SYNOPSIS
+shell [options]
+
+DESCRIPTION
+Le shell est un interpréteur de commandes de base qui permet d'exécuter des commandes externes et internes. Ce programme prend en charge des commandes comme exit pour quitter le shell et env pour afficher les variables d'environnement du système. Le shell fonctionne de manière interactive, en demandant des entrées de l'utilisateur et en exécutant les commandes en conséquence. Il prend également en charge la gestion des erreurs et des commandes internes.
+
+COMMANDES INTERNES
+
+exit
+La commande exit termine l'exécution du shell. Elle ne prend pas d'arguments. Lorsqu'elle est invoquée, le shell se ferme, et l'utilisateur est renvoyé à l'invite de commande de son terminal.
+Exemple :
+$ exit
+
+env
+La commande env affiche toutes les variables d'environnement définies pour la session actuelle du shell. Cela inclut des informations sur l'utilisateur, le système, le répertoire courant, etc.
+
+
+COMMANDES EXTERNES
+Les commandes externes sont des programmes que le shell exécute depuis le système. Lorsqu'une commande externe est entrée, le shell tente de localiser l'exécutable dans les répertoires définis par la variable d'environnement PATH. Si la commande est trouvée, elle est exécutée dans un processus enfant.
+Exemple :
+$ ls
+Cette commande liste les fichiers d'un répertoire.
+
+FONCTIONNALITÉS
+
+Exécution de commandes externes : Le shell permet l'exécution de programmes externes. Lorsqu'une commande est entrée, le shell cherche son exécutable dans les répertoires spécifiés dans la variable PATH et l'exécute dans un processus séparé.
+
+Gestion des commandes internes : Les commandes internes comme exit et env sont gérées directement par le shell, sans nécessiter de recherche d'exécutable.
+
+Interaction avec l'utilisateur : Le shell affiche un prompt personnalisé (($) ) et attend l'entrée de l'utilisateur. Une fois une commande saisie, elle est exécutée et le shell attend à nouveau.
+
+Gestion des erreurs : Si une commande externe n'est pas trouvée ou si elle échoue, le shell affiche un message d'erreur indiquant que la commande est introuvable.
+
+USAGE
+
+Lancer le shell : Pour démarrer le shell, compilez et lancez le programme en utilisant la commande suivante :
+gcc -o shell shell.c
+./shell
+
+Entrer des commandes : Une fois le shell lancé, vous pouvez entrer des commandes à tout moment. Si la commande est interne, le shell l'exécutera directement, sinon il cherchera un exécutable correspondant.
+
+Quitter le shell : Pour quitter le shell, tapez la commande exit et appuyez sur la touche Entrée.
+
+EXEMPLES
+
+Exécuter une commande externe :
+$ ls
+Documents Downloads Music Pictures
+
+Afficher les variables d'environnement :
+$ env
+PATH=/usr/bin:/bin:/usr/local/bin
+HOME=/home/julien
+USER=julien
+
+Quitter le shell :
+$ exit
+
+AUTEUR
+Développé par [Votre Nom], auteur d'un shell personnalisé.
+
+VOIR AUSSI
+
+sh(1) - Shell Unix standard.
+bash(1) - Shell Bourne Again.
+execve(2) - Fonction système pour exécuter des programmes.
+Cette version linéaire simplifie la lecture en regroupant toutes les informations dans un format direct et concis. Elle est idéale pour une documentation textuelle ou un fichier à lire rapidement.
