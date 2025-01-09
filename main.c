@@ -30,14 +30,12 @@ int main(void)
 if (strcmp(buffer, "exit") == 0)
         {
 		exit_command(exitstatus);
-            break;
   if (strcmp(buffer, "env") == 0)
         {
             env_command();  
             continue;  
         }
-           /** exit_command(exitstatus);
-            break;*/
+           /** exit_command(exitstatus);*/
         }
         execute_command(buffer);
     }
