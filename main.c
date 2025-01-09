@@ -27,7 +27,11 @@ int main(void)
         /* Skip empty lines */
         if (buffer[0] == '\0')
             continue;
-
+if (strcmp(buffer, "exit") == 0)
+        {
+            exit_command();
+            break;
+        }
         execute_command(buffer);
     }
 
