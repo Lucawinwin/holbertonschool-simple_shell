@@ -29,6 +29,11 @@ int main(void)
             continue;
 if (strcmp(buffer, "exit") == 0)
         {
+  if (strcmp(buffer, "env") == 0)
+        {
+            env_command();  
+            continue;  
+        }
             exit_command();
             break;
         }
