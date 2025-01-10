@@ -35,8 +35,8 @@ int main(void)
 if (strcmp(buffer, "exit") == 0)
         {
 		free(buffer);
-		fflush(stdout);
 		exit_command(exitstatus);
+		fflush(stdout);
 	}
   if (strcmp(buffer, "env") == 0)
         {
