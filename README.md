@@ -71,6 +71,3 @@ gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o hsh
 ## Participants
 Luca windwehr github : https://github.com/Lucawinwin
 Nordine ounissi github : https://github.com/Nordine000
-
-https://lucid.app/lucidchart/dc8d3c70-2f4a-4d36-8589-db7a7a5234dd/edit?view_items=--FHhf9gXTsS&invitationId=inv_294cec27-380a-4660-9fb9-748b8ccbe076
-
