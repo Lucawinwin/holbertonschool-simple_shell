@@ -34,6 +34,7 @@ int main(void)
             continue;
 if (strcmp(buffer, "exit") == 0)
         {
+		fflush(stdout);
 		free(buffer);
 		exit_command(exitstatus);
 	}
