@@ -1,5 +1,22 @@
 #include "shell.h"
+#include <string.h>
+#include <unistd.h>
+#include <stdio.h>
+#include <stdlib.h>
 
+
+void debug_path()
+{
+	char *path_value = path();
+	if (path_value != NULL)
+	{
+		printf("Current PATH: %s\n", path_value);
+	}
+	else
+	{
+		printf("PATH not found\n");
+	}
+}
 /**
  * main - Simple shell implementation
  * Return: Always 0
@@ -11,6 +28,8 @@ int main(void)
     ssize_t chars_read;
     int interactive = isatty(STDIN_FILENO);
     int exitstatus = 0;
+  int command_status = execute_command(buffer);
+    init_global_environ();
     while (1)
     {
         if (interactive)
@@ -18,7 +37,6 @@ int main(void)
             printf("%s", PROMPT);
 	    fflush(stdout);
 	}
-
         chars_read = getline(&buffer, &bufsize, stdin);
         if (chars_read == -1)
 	{
@@ -43,8 +61,22 @@ if (strcmp(buffer, "exit") == 0)
             env_command();  
             continue;  
         }
+  if (strcmp(buffer, "debug_path") == 0)
+  {
+	  debug_path(); continue;
+  }
+  if (new_command(buffer))
+  {
+	  printf("Command found: %s\n", buffer);
+	  if (command_status == -1)
+	  {
+		  printf("%s: Command not found\n", buffer);
+	  }
+  } else {
+	  printf("%s: Command not found\n", buffer);
+  }
+  execute_command(buffer);
            /** exit_command(exitstatus);*/
-        execute_command(buffer);
     }
 
     free(buffer);

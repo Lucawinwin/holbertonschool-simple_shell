@@ -12,11 +12,11 @@ int execute_command(char *command)
     char *argv[2];
 
     /* Execute only if command exists and is executable */
-    if (access(command, X_OK) != 0)
+   /** if (access(command, X_OK) != 0)
     {
         printf("./shell: No such file or directory\n");
         return (-1);
-    }
+    }*/
 
     pid = fork();
     if (pid == -1)
@@ -32,7 +32,15 @@ int execute_command(char *command)
     }
     else
     {
-        wait(&status);
+	    waitpid(pid, &status, 0);
+	    if (WIFEXITED(status) && WEXITSTATUS(status) == 127)
+	    {
+		    fprintf(stderr, "%s: Command not found\n", command);
+	    }
+	    else if (WIFEXITED(status))
+	    {
+		    return WEXITSTATUS(status);
+	    }
     }
 
     return (0);
