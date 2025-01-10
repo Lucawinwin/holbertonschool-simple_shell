@@ -21,15 +21,14 @@ void debug_path()
  * main - Simple shell implementation
  * Return: Always 0
  */
-int main(void)
+
+int main (void)
 {
-    char *buffer = NULL;
+char *buffer = NULL;
     size_t bufsize = 0;
     ssize_t chars_read;
     int interactive = isatty(STDIN_FILENO);
     int exitstatus = 0;
-  int command_status = execute_command(buffer);
-    init_global_environ();
     while (1)
     {
         if (interactive)
@@ -37,6 +36,7 @@ int main(void)
             printf("%s", PROMPT);
 	    fflush(stdout);
 	}
+
         chars_read = getline(&buffer, &bufsize, stdin);
         if (chars_read == -1)
 	{
@@ -58,27 +58,14 @@ if (strcmp(buffer, "exit") == 0)
 	}
   if (strcmp(buffer, "env") == 0)
         {
-            env_command();  
-            continue;  
+            env_command();
+            continue;
         }
-  if (strcmp(buffer, "debug_path") == 0)
-  {
-	  debug_path(); continue;
-  }
-  if (new_command(buffer))
-  {
-	  printf("Command found: %s\n", buffer);
-	  if (command_status == -1)
-	  {
-		  printf("%s: Command not found\n", buffer);
-	  }
-  } else {
-	  printf("%s: Command not found\n", buffer);
-  }
-  execute_command(buffer);
            /** exit_command(exitstatus);*/
+        execute_command(buffer);
     }
 
     free(buffer);
     return (0);
 }
+
